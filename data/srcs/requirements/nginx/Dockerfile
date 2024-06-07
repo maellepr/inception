@@ -27,8 +27,9 @@ RUN mkdir -p /var/run/nginx
 # le fichier conf de base sera remplace par le notre au demarrage
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
-
+# donne les droits a root a l'utilisateur
 RUN chmod 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 
+# lance nginx au 1er plan
 CMD ["nginx", "-g", "daemon off;"]

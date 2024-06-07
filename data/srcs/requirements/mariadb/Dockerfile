@@ -6,7 +6,7 @@ RUN apt-get install -y mariadb-server
 RUN apt-get install -y mariadb-client
 RUN apt-get install -y procps
 
-
+# copie notre fichier .cnf a la place de celui de base
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 RUN mkdir -p /var/run/mysqld

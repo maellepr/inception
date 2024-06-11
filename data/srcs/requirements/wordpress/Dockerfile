@@ -6,6 +6,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y wget
 RUN apt-get install -y php7.4 php-fpm php-mysql
+RUN apt-get install -y redis php-redis && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \

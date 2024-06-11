@@ -36,6 +36,17 @@ fi
 
 if [ ! -d /run/php ]; then
 	mkdir /run/php;
+
+# BONUS
+wp config set WP_REDIS_HOST redis --allow-root
+wp config set WP_REDIS_PORT 6379 --raw --allow-root
+wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root
+
+wp config set WP_REDIS_CLIENT phpredis --allow-root
+wp plugin install redis-cache --activate --allow-root
+wp plugin update --all --allow-root
+wp redis enable --allow-root
+
 fi
 
 exec /usr/sbin/php-fpm7.4 -F -R
